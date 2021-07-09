@@ -1,6 +1,6 @@
 const readline = require("readline");
 const puppeteer = require('puppeteer-extra')
-const chromium = require('chromium'); 
+const chromium = require('chrome-aws-lambda'); 
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
