@@ -25,6 +25,9 @@
     "react-dom": "^16.13.1",
     "universal-cookie": "^4.0.4"
   },
+  "pkg": {
+    "assets": "node_modules/**/*.*"
+  },
   "license": "MIT",
   "keywords": [
     "next"
