@@ -33,7 +33,6 @@ export default async function fbripapi({
         const data = request.data
         return data
     } catch (e) {
-        console.log(e); return;
         if (e.response.status == 401) {
             console.error('Account session invalidated.')
             invalidateServerSideAccount(context)

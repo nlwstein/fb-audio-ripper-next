@@ -7,7 +7,7 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 
 export default function handler(req, res) {
   if (!req.body.email || !req.body.password) {
-    return res.status(400).json({ validation: false, message: "Missing username or password. Piss", body: req.body, data: req.data });
+    return res.status(400).json({ validation: false, message: "Missing username or password.", body: req.body, data: req.data });
   }
   (async () => {
     try {

