@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer-extra')
-// const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
+const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 export default function handler(req, res) {
@@ -9,7 +9,7 @@ export default function handler(req, res) {
   (async () => {
     try {
       puppeteer.use(StealthPlugin())
-      // puppeteer.use(AdblockerPlugin({ blockTrackers: true }))
+      puppeteer.use(AdblockerPlugin({ blockTrackers: true }))
       const browser = await puppeteer.launch(); 
       const page = await browser.newPage();
       await page.goto("https://www.facebook.com/");
