@@ -4,6 +4,7 @@ import {
     getServerSideAccount,
     invalidateServerSideAccount,
 } from '../context/FacebookAuthContext'
+import NProgress from 'nprogress'
 
 export default async function fbripapi({
     method = 'GET',
@@ -21,6 +22,15 @@ export default async function fbripapi({
             rejectUnauthorized: false,
         })
     })
+    instance.onDownloadProgress = e => {
+        const percentage = calculatePercentage(e.loaded, e.total)
+        NProgress.set(percentage)
+    }
+    instance.interceptors.response.use(response => {
+        NProgress.done(true)
+        return response
+    })
+
     let _data = data;
     try {
         const config = {
@@ -29,6 +39,7 @@ export default async function fbripapi({
             data: _data,
         };
         console.log(config); 
+        NProgress.start()
         const request = await instance.request(config)
         const data = request.data
         return data
