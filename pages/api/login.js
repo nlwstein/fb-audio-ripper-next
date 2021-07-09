@@ -11,7 +11,7 @@ export default function handler(req, res) {
     try {
       puppeteer.use(StealthPlugin())
       puppeteer.use(AdblockerPlugin({ blockTrackers: true }))
-      const browser = await puppeteer.launch({ headless: true });
+      const browser = await puppeteer.launch();
       const page = await browser.newPage();
       await page.goto("https://www.facebook.com/");
       await page.waitForSelector("#email");
