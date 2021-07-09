@@ -1,6 +1,3 @@
-
-
-const chromium = require('chrome-aws-lambda')
 const puppeteer = require('puppeteer-extra')
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
