@@ -1,9 +1,8 @@
 const readline = require("readline");
-import chromium from 'chrome-aws-lambda';
-import puppeteer from 'puppeteer-extra'
-
-import AdblockerPlugin from 'puppeteer-extra-plugin-adblocker'
-import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+const puppeteer = require('puppeteer-extra')
+const chromium = require('chromium'); 
+const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 export default function handler(req, res) {
   if (!req.body.email || !req.body.password) {
