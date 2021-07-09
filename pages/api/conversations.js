@@ -1,10 +1,6 @@
 import login from 'facebook-chat-api'
 
-const puppeteer = require("puppeteer");
-const readline = require("readline");
-
 export default function handler(req, res) {
-  // return res.status(200).json({conversations:[ { test: true }, { test: true }, { test: true }, { test: true }] })
   if (!req.body.appstate || !req.body.id) {
     return res.status(400).json({ validation: false, message: "Missing appstate or id", body: req.body, data: req.data });
   }

@@ -1,6 +1,8 @@
-const readline = require("readline");
-const puppeteer = require('puppeteer-extra')
-const chromium = require('chrome-aws-lambda'); 
+
+
+const chromium = require('chrome-aws-lambda')
+const { addExtra } = require('puppeteer-extra')
+const puppeteer = addExtra(chromium.puppeteer)
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
@@ -12,12 +14,7 @@ export default function handler(req, res) {
     try {
       puppeteer.use(StealthPlugin())
       puppeteer.use(AdblockerPlugin({ blockTrackers: true }))
-      const browser = await puppeteer.launch({
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
-        headless: chromium.headless,
-      });
+      const browser = await puppeteer.launch(); 
       const page = await browser.newPage();
       await page.goto("https://www.facebook.com/");
       await page.waitForSelector("#email");
